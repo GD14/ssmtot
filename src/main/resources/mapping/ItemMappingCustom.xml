@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间 是必须的 -->
+<mapper namespace="com.rong.ssm.mapper.ItemMapperCustom">
+    <sql id="query_items_where">
+        <if test="itemCustom!=null">
+            <if test="itemCustom.name!=null and itemCustom.name!=''">
+                item.name like '%${itemCustom.name}%'
+            </if>
+        </if>
+    </sql>
+    
+    <select id="findItemList" parameterType="com.rong.ssm.pojo.ItemQueryVo" resultType="com.rong.ssm.pojo.ItemCustom">
+        select * from item
+      <where>
+          <include refid="query_items_where"/>
+      </where>
+    </select>
+</mapper>

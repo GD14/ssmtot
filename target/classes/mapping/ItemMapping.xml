@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间 是必须的 -->
+<mapper namespace="com.rong.ssm.mapper.ItemMapper">
+    <select id="findItemById" parameterType="int" resultType="com.rong.ssm.pojo.Item">
+        select * from item where id=#{id}
+    </select>
+
+    <update id="updateItemById" parameterType="com.rong.ssm.pojo.Item">
+        update item set name="${name}",price="${price}",createTime="${createTime}" where id="${id}"
+    </update>
+</mapper>
